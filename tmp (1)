@@ -1,56 +1,41 @@
-package com.marwadi.myapplayouts;
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="*"
+    android:padding="16dp">
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Intent;
-import android.os.Build;
-import android.os.Bundle;
-import android.widget.Button;
-import android.widget.TimePicker;
-import androidx.appcompat.app.AppCompatActivity;
-import java.util.Calendar;
+    <TableRow>
+        <TextView
+            android:text="Name"
+            android:textStyle="bold"
+            android:padding="8dp"/>
+        <TextView
+            android:text="Subject"
+            android:textStyle="bold"
+            android:padding="8dp"/>
+        <TextView
+            android:text="Marks"
+            android:textStyle="bold"
+            android:padding="8dp"/>
+    </TableRow>
 
-public class MainActivity8 extends AppCompatActivity {
+    <TableRow>
+        <TextView android:text="John" android:padding="8dp"/>
+        <TextView android:text="Math" android:padding="8dp"/>
+        <TextView android:text="85" android:padding="8dp"/>
+    </TableRow>
 
-    TimePicker timePicker;
-    Button btnSetAlarm;
+    <TableRow>
+        <TextView android:text="Alice" android:padding="8dp"/>
+        <TextView android:text="Science" android:padding="8dp"/>
+        <TextView android:text="90" android:padding="8dp"/>
+    </TableRow>
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main8);
+    <TableRow>
+        <TextView android:text="Bob" android:padding="8dp"/>
+        <TextView android:text="English" android:padding="8dp"/>
+        <TextView android:text="78" android:padding="8dp"/>
+    </TableRow>
 
-        timePicker = findViewById(R.id.timePicker);
-        btnSetAlarm = findViewById(R.id.btnSetAlarm);
-
-        btnSetAlarm.setOnClickListener(view -> {
-
-            int hour, minute;
-
-            if (Build.VERSION.SDK_INT >= 23) {
-                hour = timePicker.getHour();
-                minute = timePicker.getMinute();
-            } else {
-                hour = timePicker.getCurrentHour();
-                minute = timePicker.getCurrentMinute();
-            }
-
-            Calendar calendar = Calendar.getInstance();
-            calendar.set(Calendar.HOUR_OF_DAY, hour);
-            calendar.set(Calendar.MINUTE, minute);
-            calendar.set(Calendar.SECOND, 0);
-
-            Intent intent = new Intent(MainActivity8.this, AlarmReceiver.class);
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(
-                    MainActivity8.this, 0, intent, PendingIntent.FLAG_IMMUTABLE
-            );
-
-            AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-            alarmManager.set(
-                    AlarmManager.RTC_WAKEUP,
-                    calendar.getTimeInMillis(),
-                    pendingIntent
-            );
-        });
-    }
-}
+</TableLayout>

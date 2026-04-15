@@ -1,22 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="20dp"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+package com.example.myappsimplelogin;
 
-    <AnalogClock
-        android:id="@+id/analogClock"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
-    <TextView
-        android:id="@+id/txtTime"
-        android:textSize="20sp"
-        android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+import androidx.appcompat.app.AppCompatActivity;
 
-</LinearLayout>
+public class MainActivity5 extends AppCompatActivity {
+    ImageButton imageButton;
+    TextView tvMessage;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main5);
+
+        imageButton = findViewById(R.id.imageButton);
+        tvMessage = findViewById(R.id.tvMessage);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tvMessage.setText("ImageButton Clicked!");
+                Toast.makeText(MainActivity5.this, "You clicked the ImageButton", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+}
