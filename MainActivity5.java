@@ -1,34 +1,41 @@
-package com.example.myapplicationmca;
+package com.example.myappcontextmenu;
 
-import android.app.DatePickerDialog;
 import android.os.Bundle;
-import android.widget.Button;
+import android.view.ContextMenu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
-
+import android.widget.Toast;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.Calendar;
-
-public class MainActivity4 extends AppCompatActivity {
-
-    Button btnPickDate;
-    TextView txtDate;
+public class MainActivity extends AppCompatActivity {
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main4);
+        setContentView(R.layout.activity_main);
 
-        btnPickDate = findViewById(R.id.btnPickDate);
-        txtDate = findViewById(R.id.txtDate);
-        btnPickDate.setOnClickListener(v -> {
-            Calendar calendar = Calendar.getInstance();
-            int year = calendar.get(Calendar.YEAR);
-            int month = calendar.get(Calendar.MONTH);
-            int day = calendar.get(Calendar.DAY_OF_MONTH);
-            DatePickerDialog datePickerDialog = new DatePickerDialog(this, (view, selectedYear, selectedMonth, selectedDay) -> {
-                String date = selectedDay + "/" + (selectedMonth + 1) + "/" + selectedYear;txtDate.setText("Selected Date: " + date);}, year, month, day);
-            datePickerDialog.show();
-        });
+        textView = findViewById(R.id.textView);
+        registerForContextMenu(textView);
+    }
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        getMenuInflater().inflate(R.menu.contextmenu_list, menu);
+    }
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.setting: Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.help: Toast.makeText(getApplicationContext(), "Help", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.about: Toast.makeText(getApplicationContext(), "About Us", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
     }
 }
