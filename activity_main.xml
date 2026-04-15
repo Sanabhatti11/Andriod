@@ -1,23 +1,41 @@
-package com.example.mytoasimpl;
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
 
-import android.os.Bundle;
-import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-public class MainActivity2 extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
-        String fname = getIntent().getStringExtra("fname");
-        String lname = getIntent().getStringExtra("lname");
-        String mobile = getIntent().getStringExtra("mobile");
-        String email = getIntent().getStringExtra("email");
-
-        String message = "Name: " + fname + " " + lname + "\nMobile: " + mobile + "\nEmail: " + email;
-
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
-    }
-}
+    <TextView
+        android:id="@+id/txt1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="Hello World!" />
+    <TextView
+        android:id="@+id/txt2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="Hello World 2" />
+    <Button
+        android:id="@+id/btnClickMe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="35sp"
+        android:text="Click Me" />
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="35sp"
+        android:text="Submit" />
+    <EditText
+        android:id="@+id/edtName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Enter your Good Name!" />
+</LinearLayout>
